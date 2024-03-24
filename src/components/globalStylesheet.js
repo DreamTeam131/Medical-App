@@ -17,6 +17,27 @@ export const globalStyles = StyleSheet.create({
         alignItems:'center'
     },
     loginButton: {
-        alignItems:'center'
+        alignItems:'center',
+    },
+
+    homeContainer: {  //style for 'home' page container
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    button: {  //style for custom button
+        backgroundColor: '#666',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 40,
+        margin: 4
+    },
+
+    buttonText: { //style for custom button text
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 24,
     }
+
 });

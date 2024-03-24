@@ -9,7 +9,7 @@ export default function Login({ navigation }) {
             <TextInput style={globalStyles.loginTextInput} placeholder="Password" secureTextEntry></TextInput>
             <Button title='Forgot Username/Password?' onPress={() => navigation.navigate('forgotPassword')}/>
             <Button style={globalStyles.loginButton} title='Sign-In' onPress={() => navigation.navigate('Home')}/>
-            <Button style={globalStyles.loginButton} title='Sign-Up'onPress={() => navigation.navigate('register')}/>
+            <Button style={globalStyles.loginButton} title='Sign-Up' onPress={() => navigation.navigate('register')}/>
         </View>
     )
 }
