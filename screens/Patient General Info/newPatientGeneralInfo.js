@@ -32,9 +32,6 @@ const initialValues = {
   emailAddress: '',
   emergencyContactName: '',
   emergencyContactPhone: '',
-  currentIllness: '',
-  previousIllness: '',
-  allergies: '',
 }
 
 const bloodGroup = [
@@ -84,6 +81,7 @@ export function NewPatientGeneralInfo({ navigation }) {
           onSubmit={(values, actions) => {
             console.log(values)
             actions.resetForm()
+            navigation.navigate('NewPatientHealthConditions')
           }}
         >
           {(props) => (
@@ -251,40 +249,6 @@ export function NewPatientGeneralInfo({ navigation }) {
                   checkboxLabelStyle: { fontSize: 18 },
                   checkboxComponent: <View style={styles.radioButton} />,
                 }}
-              />
-
-              <Text style={styles.label}>Allergies</Text>
-
-              <Form
-                placeholder='List all known allergies here'
-                value={props.values.allergies}
-                onChangeText={props.handleChange('allergies')}
-                keyboardType='default'
-                multiline={true}
-                numberOfLines={2}
-              />
-
-              <Text style={styles.label}>
-                Recent Illnesses / {'\n'}Pre-existing Conditions
-              </Text>
-
-              <Form
-                placeholder='List conditions here'
-                value={props.values.previousIllness}
-                onChangeText={props.handleChange('previousIllness')}
-                keyboardType='default'
-                multiline={true}
-                numberOfLines={2}
-              />
-              <Text style={styles.label}>Current Illness / Condition</Text>
-
-              <Form
-                placeholder='List conditions here'
-                value={props.values.currentIllness}
-                onChangeText={props.handleChange('currentIllness')}
-                keyboardType='default'
-                multiline={true}
-                numberOfLines={2}
               />
 
               <SubmitButton onPress={props.handleSubmit} />
