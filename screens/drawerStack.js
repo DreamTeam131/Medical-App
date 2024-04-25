@@ -126,6 +126,9 @@ export function DrawerScreenStack({ navigation }) {
       />
       <DrawerStack.Screen name='New Patient' component={AddNewPatient} />
       <DrawerStack.Screen name='Find Patient' component={Select} />
+      <DrawerStack.Screen name='Appointments' component={HomeScreen} />
+      <DrawerStack.Screen name='Analysis' component={HomeScreen} />
+      <DrawerStack.Screen name='Prescriptions' component={HomeScreen} />
     </DrawerStack.Navigator>
   )
 }
