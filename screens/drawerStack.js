@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Button, StyleSheet, Text, View } from 'react-native'
+import { Image, Button, StyleSheet, Text, View, TouchableHighlight } from 'react-native'
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -9,12 +9,12 @@ import { StatusBar } from 'expo-status-bar'
 import { AddNewPatient } from './Patient Info/AddNewPatient'
 import Select from './SelectionPage'
 import { supabase } from '../lib/supabase'
-import LogoBlack from '../assets/logo-black-transparent.png'
 import LogoSeafoam from '../assets/logo-seafoam-transparent.png'
 import Africa from '../assets/africa-blue2.png'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import HorizontalApptList from '../components/HorizontalApptList'
 import Form from '../components/Form'
+import { CalendarScreen } from './NewCalendarScreen'
 
 const today = new Date()
 const week = [
@@ -51,12 +51,17 @@ function HomeScreen({ navigation }) {
           {day}, {month} {today.getDate()}
         </Text>
       </View>
-      <View style={styles.apptlist}>
+      <View style={{flexDirection:'row', textAlignVertical:'center'}}>
         <Text style={styles.label}>Upcoming Appointments</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Calendar")}>
+          <Text style={styles.seeAll}>See All</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.apptlist}>
         <HorizontalApptList />
       </View>
       <View style={styles.searchBarContainer}>
-        <Text style={styles.label}>Patient Search</Text>
+        <Text style={styles.labels}>Patient Search</Text>
         <Form placeholder='Search by patient name...' />
       </View>
     </View>
@@ -105,7 +110,7 @@ export function DrawerScreenStack({ navigation }) {
       initialRouteName='Home'
       drawerContent={(props) => <DrawerContent {...props} />}
       screenOptions={{
-        headerRight: () => <Image style={styles.tinyLogo} source={LogoBlack} />,
+        headerRight: () => <Image style={styles.tinyLogo} source={LogoSeafoam} />,
         headerStyle: { borderBottomWidth: 2, borderColor: '#0ee3ae' },
         headerTitleStyle: { fontFamily: 'Lexend_400Regular' },
         drawerActiveTintColor: '#0ee3ae',
@@ -167,6 +172,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     alignItems: 'center',
     backgroundColor: '#0ee3ae',
+    marginBottom:30
   },
   drawerFooter: {
     paddingHorizontal: 10,
@@ -194,6 +200,24 @@ const styles = StyleSheet.create({
     fontFamily: 'Lexend_400Regular',
     fontSize: 16,
     marginLeft: 10,
+    marginBottom:10,
+    
+  },
+  labels: {
+    fontFamily: 'Lexend_400Regular',
+    fontSize: 16,
+    marginLeft: 10,
+    marginBottom:10,
+    marginTop:8
+  },
+  seeAll: {
+    fontFamily: 'Lexend_400Regular',
+    fontSize: 12,
+    marginLeft: 10,
+    marginBottom:10,
+    marginTop:4,
+    marginLeft:170,
+    color:'#0ee3ae'
   },
   searchBarContainer: {
     paddingHorizontal: 0,
