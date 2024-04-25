@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {
   View,
   Text,
@@ -13,36 +13,40 @@ import logo from '../../assets/logo-seafoam-transparent.png'
 
 export function SplashScreen({ navigation }) {
   return (
-    <SafeAreaView style={styles.container}>
-      <ImageBackground
-        source={background}
-        resizeMode='cover'
-        style={styles.image}
-      >
-        <View style={styles.content}>
-          <View style={styles.logoContainer}>
-            <Image source={logo} style={styles.logo} />
-            <View style={styles.textBox}>
-              <Text style={styles.logoText}>Medical</Text>
-              <Text style={styles.logoText}>App</Text>
+    <Fragment>
+      <SafeAreaView style={{backgroundColor:'#0c4370'}}/>
+      <SafeAreaView style={styles.container}>
+        <ImageBackground
+          source={background}
+          resizeMode='cover'
+          style={styles.image}
+        >
+          <View style={styles.content}>
+            <View style={styles.logoContainer}>
+              <Image source={logo} style={styles.logo} />
+              <View style={styles.textBox}>
+                <Text style={styles.logoText}>Medical</Text>
+                <Text style={styles.logoText}>App</Text>
+              </View>
             </View>
+            <Text style={styles.statement}>Patient Management</Text>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('LoginScreen')}
+            >
+              <Text style={styles.text}>Get Started</Text>
+            </TouchableOpacity>
           </View>
-          <Text style={styles.statement}>Patient Management</Text>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('LoginScreen')}
-          >
-            <Text style={styles.text}>Get Started</Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </SafeAreaView>
+        </ImageBackground>
+      </SafeAreaView>
+    </Fragment>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'black'
   },
   image: {
     flex: 1,

@@ -13,10 +13,10 @@ import { NewPatientLabReports } from './Patient Lab Reports/newPatientLabReports
 import { NewPatientUpcomingAppointments } from './Patient Upcoming Appointments/newPatientUpcomingAppointments'
 import { EditUpcomingAppointments } from './Patient Upcoming Appointments/editUpcomingAppointments'
 import { EditLabReports } from './Patient Lab Reports/editLabReports'
-import { useNavigation } from '@react-navigation/native'
 import SelectThis from './SpecificSelectionPage'
 import Select from './SelectionPage'
 import DisplayInfo from './Patient Info/DisplayInfo'
+import CalendarScreen from './NewCalendarScreen'
 
 function DetailScreen() {
   return (
@@ -37,6 +37,12 @@ export function HomeScreenStack({ navigation }) {
         component={DrawerScreenStack}
         options={{ headerShown: false }}
       />
+      
+      <HomeStack.Screen 
+      name='Calendar' 
+      component={CalendarScreen}
+      options={{headerBackTitle:'Go Back', headerTitle:""}} />
+
       <HomeStack.Screen
         name='Add New Patient'
         component={AddNewPatient}
