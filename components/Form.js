@@ -1,8 +1,26 @@
-import { View, StyleSheet, TextInput, Text } from 'react-native'
+import { View, StyleSheet, TextInput, Platform } from 'react-native'
 import { useState } from 'react'
+import {
+  useFonts,
+  Lexend_400Regular,
+  Lexend_600SemiBold,
+  Lexend_500Medium,
+  Lexend_300Light,
+} from '@expo-google-fonts/lexend'
 
 const Form = ({ onFocus = () => {}, ...props }) => {
   const [isFocused, setIsFocused] = useState(false)
+  let [fontsLoaded, fontError] = useFonts({
+    Lexend_300Light,
+    Lexend_400Regular,
+    Lexend_500Medium,
+    Lexend_600SemiBold,
+  })
+
+  if (!fontsLoaded && !fontError) {
+    return null
+  }
+
   return (
     <View style={styles.form}>
       <TextInput
@@ -19,11 +37,11 @@ const Form = ({ onFocus = () => {}, ...props }) => {
         style={[
           styles.input,
           {
-            borderColor: isFocused ? 'blue' : '#fff',
+            borderColor: isFocused ? '#0ee3ae' : '#fff',
             backgroundColor: isFocused ? 'white' : '#eee',
           },
         ]}
-        cursorColor='blue'
+        cursorColor='#ccc'
         value={props.value}
         maxLength={props.maxLength}
         keyboardType={props.keyboardType}
@@ -39,11 +57,23 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: '#eee',
     paddingVertical: 12,
-    paddingLeft: 20,
+    paddingHorizontal: 20,
     fontSize: 18,
-    borderRadius: 30,
+    borderRadius: 20,
     marginVertical: 4,
-    borderWidth: 1.2,
+    borderWidth: 1.5,
+    fontFamily: 'Lexend_400Regular',
+  },
+  errorBorder: {
+    backgroundColor: '#eee',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    fontSize: 18,
+    borderRadius: 20,
+    marginVertical: 4,
+    borderWidth: 1.5,
+    fontFamily: 'Lexend_400Regular',
+    borderColor: 'red',
   },
 })
 

@@ -3,10 +3,8 @@ import { StyleSheet, Text, View, Button } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { DrawerScreenStack } from './drawerStack'
 import { StatusBar } from 'expo-status-bar'
-import { NewPatientGeneralInfo } from './Patient General Info/newPatientGeneralInfo'
-import { EditGeneralInfo } from './Patient General Info/editGeneralInfo'
-import { NewPatientHealthConditions } from './Patient Health Conditions/newPatientHealthConditons'
-import { EditHealthConditions } from './Patient Health Conditions/editHealthConditions'
+import { EditPatient } from './Patient Info/EditPatient'
+import { AddNewPatient } from './Patient Info/AddNewPatient'
 import { NewPatientMedications } from './Patient Medications/newPatientMedications'
 import { EditMedications } from './Patient Medications/editMedications'
 import { NewPatientAnalysis } from './Patient Analysis/newPatientAnalysis'
@@ -16,6 +14,9 @@ import { NewPatientUpcomingAppointments } from './Patient Upcoming Appointments/
 import { EditUpcomingAppointments } from './Patient Upcoming Appointments/editUpcomingAppointments'
 import { EditLabReports } from './Patient Lab Reports/editLabReports'
 import { useNavigation } from '@react-navigation/native'
+import SelectThis from './SpecificSelectionPage'
+import Select from './SelectionPage'
+import DisplayInfo from './Patient Info/DisplayInfo'
 
 function DetailScreen() {
   return (
@@ -37,10 +38,10 @@ export function HomeScreenStack({ navigation }) {
         options={{ headerShown: false }}
       />
       <HomeStack.Screen
-        name='AddNewPatientGeneralInfo'
-        component={NewPatientGeneralInfo}
+        name='Add New Patient'
+        component={AddNewPatient}
         options={({ navigation }) => ({
-          title: 'General Info',
+          title: 'Add New Patient',
           headerBackTitle: 'Back',
           headerRight: () => (
             <Button
@@ -51,29 +52,11 @@ export function HomeScreenStack({ navigation }) {
         })}
       />
       <HomeStack.Screen
-        name='EditGeneralInfo'
-        component={EditGeneralInfo}
+        name='Edit Patient'
+        component={EditPatient}
         options={{ title: 'Edit General Info', headerBackTitle: 'Back' }}
       />
-      <HomeStack.Screen
-        name='NewPatientHealthConditions'
-        component={NewPatientHealthConditions}
-        options={({ navigation }) => ({
-          title: 'Health Conditions',
-          headerBackTitle: 'Back',
-          headerRight: () => (
-            <Button
-              onPress={() => navigation.navigate('NewPatientMedications')}
-              title='Next'
-            />
-          ),
-        })}
-      />
-      <HomeStack.Screen
-        name='EditHealthConditions'
-        component={EditHealthConditions}
-        options={{ title: 'Edit Health Conditions', headerBackTitle: 'Back' }}
-      />
+
       <HomeStack.Screen
         name='NewPatientMedications'
         component={NewPatientMedications}
@@ -150,6 +133,30 @@ export function HomeScreenStack({ navigation }) {
         component={EditUpcomingAppointments}
         options={{
           title: 'Edit Upcoming Appointments',
+          headerBackTitle: 'Back',
+        }}
+      />
+      <HomeStack.Screen
+        name='SpecificSelect'
+        component={SelectThis}
+        options={{
+          title: 'Search Results',
+          headerBackTitle: 'Back',
+        }}
+      />
+      <HomeStack.Screen
+        name='Select'
+        component={Select}
+        options={{
+          title: 'Find Patient',
+          headerBackTitle: 'Back',
+        }}
+      />
+      <HomeStack.Screen
+        name='DisplayInfo'
+        component={DisplayInfo}
+        options={{
+          title: 'Patient Information',
           headerBackTitle: 'Back',
         }}
       />
