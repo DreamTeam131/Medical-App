@@ -11,15 +11,15 @@ const SubmitButton = (props) => {
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: 'green',
+    backgroundColor: '#0ee3ae',
     padding: 10,
-    borderRadius: 40,
+    borderRadius: 20,
     marginTop: 10,
   },
   text: {
-    fontSize: 18,
+    fontSize: 22,
     color: '#fff',
-    fontWeight: 'bold',
+    fontFamily: 'Lexend_500Medium',
   },
 })
 
