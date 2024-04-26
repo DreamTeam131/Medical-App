@@ -8,10 +8,14 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native'
 import { supabase } from '../lib/supabase'
 import SearchCard from '../lib/SearchCard'
 import Form from '../components/Form'
+import SearchBox from '../components/SearchBox'
+import PatientTile from '../components/PatientTile'
 
 const Select = ({ navigation }) => {
   const [fetchError, setFetchError] = useState(null)
@@ -35,42 +39,40 @@ const Select = ({ navigation }) => {
   }, [])
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.searchBarContainer}>
-        <Form
-          placeholder='Enter First Name'
-          onChangeText={(newText) => setText(newText)}
-          defaultValue={text}
-        />
-        <TouchableOpacity
-          style={styles.searchButton}
-          onPress={() =>
-            navigation.navigate('SpecificSelect', { search: text })
-          }
-        >
-          <Text style={styles.searchText}>Search</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.patientList}>
-        <Text style={styles.label}>Patient List</Text>
-        <ScrollView horizontal={true}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ScrollView style={styles.container}>
+        <View style={styles.searchBarContainer}>
+          <SearchBox
+            placeholder='Enter First Name'
+            onChangeText={(newText) => setText(newText)}
+            defaultValue={text}
+          />
+          <TouchableOpacity
+            style={styles.searchButton}
+            onPress={() =>
+              navigation.navigate('SpecificSelect', { search: text })
+            }
+          >
+            <Text style={styles.searchText}>Search</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.patientList}>
+          <Text style={styles.label}>Patient List</Text>
           {fetchError && <Text>{fetchError}</Text>}
           {patient && (
-            <View style={{ flex: 3 }}>
+            <View>
               {patient.map((patient) => (
-                <Text key={patient.id}>
-                  <SearchCard
-                    key={patient.id}
-                    patient={patient}
-                    navigation={navigation}
-                  />
-                </Text>
+                <PatientTile
+                  key={patient.id}
+                  patient={patient}
+                  navigation={navigation}
+                />
               ))}
             </View>
           )}
-        </ScrollView>
-      </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </TouchableWithoutFeedback>
   )
 }
 const styles = StyleSheet.create({

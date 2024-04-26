@@ -1,11 +1,13 @@
-import { View, StyleSheet, TextInput } from 'react-native'
+import { View, StyleSheet, TextInput, Image } from 'react-native'
 import { useState } from 'react'
+import { Entypo } from '@expo/vector-icons'
 
-const Form = ({ onFocus = () => {}, ...props }) => {
+const SearchBox = ({ onFocus = () => {}, ...props }) => {
   const [isFocused, setIsFocused] = useState(false)
 
   return (
     <View style={styles.form}>
+      <Entypo name='magnifying-glass' size={28} color='#0ee3ae' />
       <TextInput
         autoCorrect={false}
         onFocus={() => {
@@ -36,16 +38,23 @@ const Form = ({ onFocus = () => {}, ...props }) => {
 }
 
 const styles = StyleSheet.create({
+  form: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   input: {
-    backgroundColor: '#eee',
+    flex: 1,
+    backgroundColor: '#fff',
     paddingVertical: 12,
     paddingHorizontal: 20,
     fontSize: 18,
     borderRadius: 20,
     marginVertical: 4,
+    marginLeft: 6,
     borderWidth: 1.5,
     fontFamily: 'Lexend_400Regular',
   },
 })
 
-export default Form
+export default SearchBox

@@ -1,5 +1,14 @@
 import React from 'react'
-import { Image, Button, StyleSheet, Text, View, TouchableHighlight } from 'react-native'
+import {
+  Image,
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native'
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -15,6 +24,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import HorizontalApptList from '../components/HorizontalApptList'
 import Form from '../components/Form'
 import { CalendarScreen } from './NewCalendarScreen'
+import SearchBox from '../components/SearchBox'
 
 const today = new Date()
 const week = [
@@ -44,27 +54,31 @@ let day = week[today.getDay()]
 let month = months[today.getMonth()]
 function HomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <StatusBar style='auto' />
-      <View style={styles.dateContainer}>
-        <Text style={styles.dateText}>
-          {day}, {month} {today.getDate()}
-        </Text>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <StatusBar style='auto' />
+        <View style={styles.dateContainer}>
+          <Text style={styles.dateText}>
+            {day}, {month} {today.getDate()}
+          </Text>
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={styles.label}>Upcoming Appointments</Text>
+          <View style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+            <TouchableOpacity onPress={() => navigation.navigate('Calendar')}>
+              <Text style={styles.seeAll}>See All</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.apptlist}>
+          <HorizontalApptList />
+        </View>
+        <View style={styles.searchBarContainer}>
+          <Text style={styles.labels}>Patient Search</Text>
+          <SearchBox placeholder='Search by patient name...' />
+        </View>
       </View>
-      <View style={{flexDirection:'row', textAlignVertical:'center'}}>
-        <Text style={styles.label}>Upcoming Appointments</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Calendar")}>
-          <Text style={styles.seeAll}>See All</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.apptlist}>
-        <HorizontalApptList />
-      </View>
-      <View style={styles.searchBarContainer}>
-        <Text style={styles.labels}>Patient Search</Text>
-        <Form placeholder='Search by patient name...' />
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   )
 }
 
@@ -110,7 +124,9 @@ export function DrawerScreenStack({ navigation }) {
       initialRouteName='Home'
       drawerContent={(props) => <DrawerContent {...props} />}
       screenOptions={{
-        headerRight: () => <Image style={styles.tinyLogo} source={LogoSeafoam} />,
+        headerRight: () => (
+          <Image style={styles.tinyLogo} source={LogoSeafoam} />
+        ),
         headerStyle: { borderBottomWidth: 2, borderColor: '#0ee3ae' },
         headerTitleStyle: { fontFamily: 'Lexend_400Regular' },
         drawerActiveTintColor: '#0ee3ae',
@@ -142,7 +158,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 5,
+    paddingHorizontal: 8,
   },
   drawerHeader: {
     height: 100,
@@ -172,7 +188,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     alignItems: 'center',
     backgroundColor: '#0ee3ae',
-    marginBottom:30
+    marginBottom: 30,
   },
   drawerFooter: {
     paddingHorizontal: 10,
@@ -181,7 +197,6 @@ const styles = StyleSheet.create({
   drawerLogo: {
     width: 100,
     height: 80,
-    borderWidth: 10,
   },
   headerText: {
     fontFamily: 'Lexend_600SemiBold',
@@ -197,27 +212,26 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   label: {
+    flex: 1,
     fontFamily: 'Lexend_400Regular',
     fontSize: 16,
     marginLeft: 10,
-    marginBottom:10,
-    
+    marginBottom: 10,
   },
   labels: {
     fontFamily: 'Lexend_400Regular',
     fontSize: 16,
     marginLeft: 10,
-    marginBottom:10,
-    marginTop:8
+    marginBottom: 10,
+    marginTop: 8,
   },
   seeAll: {
     fontFamily: 'Lexend_400Regular',
     fontSize: 12,
-    marginLeft: 10,
-    marginBottom:10,
-    marginTop:4,
-    marginLeft:170,
-    color:'#0ee3ae'
+    //marginLeft: 10,
+    //marginBottom: 10,
+    //marginTop: 4,
+    color: '#0ee3ae',
   },
   searchBarContainer: {
     paddingHorizontal: 0,
