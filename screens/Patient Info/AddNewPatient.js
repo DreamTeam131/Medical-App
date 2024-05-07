@@ -111,15 +111,10 @@ export function AddNewPatient({ navigation }) {
                 emergency_phone: values.emergencyContactPhone,
                 rh_factor: values.rhFactor,
                 blood_group: values.bloodGroup,
-                allergies: [values.allergies],
+                allergies: values.allergies,
                 current_illness: values.currentIllness,
-                prev_illness: [values.previousIllness],
-                medications: [
-                  values.currentMedication
-                    .split(',')
-                    .trim()
-                    .push(...values.pastMedication.split(',').trim()),
-                ],
+                prev_illness: values.previousIllness,
+                medications: values.currentMedication,
               },
             ])
             console.log(error)

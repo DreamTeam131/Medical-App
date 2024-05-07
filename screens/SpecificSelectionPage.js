@@ -49,7 +49,7 @@ const SelectThis = ({ navigation, route }) => {
           {patient && (
             <View style={{ flex: 2 }}>
               {patient.map((patient) => (
-                <Text>
+                <Text key={patient.id}>
                   <SearchCard
                     key={patient.id}
                     patient={patient}
