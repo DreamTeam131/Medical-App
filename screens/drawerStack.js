@@ -17,6 +17,7 @@ import {
 import { StatusBar } from 'expo-status-bar'
 import { AddNewPatient } from './Patient Info/AddNewPatient'
 import Select from './SelectionPage'
+import { NewAppointment } from './Patient Upcoming Appointments/NewAppointment'
 import { supabase } from '../lib/supabase'
 import LogoSeafoam from '../assets/logo-seafoam-transparent.png'
 import Africa from '../assets/africa-blue2.png'
@@ -147,7 +148,7 @@ export function DrawerScreenStack({ navigation }) {
       />
       <DrawerStack.Screen name='New Patient' component={AddNewPatient} />
       <DrawerStack.Screen name='Find Patient' component={Select} />
-      <DrawerStack.Screen name='Appointments' component={HomeScreen} />
+      <DrawerStack.Screen name='Appointments' component={NewAppointment} />
       <DrawerStack.Screen name='Analysis' component={HomeScreen} />
       <DrawerStack.Screen name='Prescriptions' component={HomeScreen} />
     </DrawerStack.Navigator>

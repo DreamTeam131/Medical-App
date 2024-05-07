@@ -36,28 +36,25 @@ const Display = ({ navigation, route }) => {
   }, [])
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {fetchError && <Text>{fetchError}</Text>}
-        {patient && (
-          <View>
-            {patient.map((patient) => (
-              <Text key={patient.id}>
-                <PatientCard key={patient.id} patient={patient} />
-              </Text>
-            ))}
-          </View>
-        )}
-      </View>
+    <ScrollView style={{ backgroundColor: '#fff' }}>
+      {fetchError && <Text>{fetchError}</Text>}
+      {patient && (
+        <View style={styles.container}>
+          {patient.map((patient) => (
+            <Text key={patient.id}>
+              <PatientCard key={patient.id} patient={patient} />
+            </Text>
+          ))}
+        </View>
+      )}
     </ScrollView>
   )
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#eaeaea',
-    alignItems: 'center',
-    marginBottom: 20,
+    backgroundColor: '#fff',
+    width: '100%',
+    paddingHorizontal: 10,
   },
 })
 

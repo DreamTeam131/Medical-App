@@ -10,13 +10,14 @@ import { EditMedications } from './Patient Medications/editMedications'
 import { NewPatientAnalysis } from './Patient Analysis/newPatientAnalysis'
 import { EditAnalysis } from './Patient Analysis/editAnalysis'
 import { NewPatientLabReports } from './Patient Lab Reports/newPatientLabReports'
-import { NewPatientUpcomingAppointments } from './Patient Upcoming Appointments/newPatientUpcomingAppointments'
+import { NewPatientUpcomingAppointments } from './Patient Upcoming Appointments/NewAppointment'
 import { EditUpcomingAppointments } from './Patient Upcoming Appointments/editUpcomingAppointments'
 import { EditLabReports } from './Patient Lab Reports/editLabReports'
 import SelectThis from './SpecificSelectionPage'
 import Select from './SelectionPage'
 import DisplayInfo from './Patient Info/DisplayInfo'
 import CalendarScreen from './NewCalendarScreen'
+import { NewAppointment } from './Patient Upcoming Appointments/NewAppointment'
 
 function DetailScreen() {
   return (
@@ -37,11 +38,12 @@ export function HomeScreenStack({ navigation }) {
         component={DrawerScreenStack}
         options={{ headerShown: false }}
       />
-      
-      <HomeStack.Screen 
-      name='Calendar' 
-      component={CalendarScreen}
-      options={{headerBackTitle:'Go Back', headerTitle:""}} />
+
+      <HomeStack.Screen
+        name='Calendar'
+        component={CalendarScreen}
+        options={{ headerBackTitle: 'Go Back', headerTitle: '' }}
+      />
 
       <HomeStack.Screen
         name='Add New Patient'
@@ -121,28 +123,6 @@ export function HomeScreenStack({ navigation }) {
         options={{ title: 'Edit Lab Reports', headerBackTitle: 'Back' }}
       />
       <HomeStack.Screen
-        name='NewPatientUpcomingAppointments'
-        component={NewPatientUpcomingAppointments}
-        options={({ navigation }) => ({
-          title: 'Upcoming Appointments',
-          headerBackTitle: 'Back',
-          headerRight: () => (
-            <Button
-              onPress={() => navigation.navigate('EditUpcomingAppointments')}
-              title='Edit'
-            />
-          ),
-        })}
-      />
-      <HomeStack.Screen
-        name='EditUpcomingAppointments'
-        component={EditUpcomingAppointments}
-        options={{
-          title: 'Edit Upcoming Appointments',
-          headerBackTitle: 'Back',
-        }}
-      />
-      <HomeStack.Screen
         name='SpecificSelect'
         component={SelectThis}
         options={{
@@ -163,6 +143,14 @@ export function HomeScreenStack({ navigation }) {
         component={DisplayInfo}
         options={{
           title: 'Patient Information',
+          headerBackTitle: 'Back',
+        }}
+      />
+      <HomeStack.Screen
+        name='New Appointment'
+        component={NewAppointment}
+        options={{
+          title: 'Schedule an Appointment',
           headerBackTitle: 'Back',
         }}
       />

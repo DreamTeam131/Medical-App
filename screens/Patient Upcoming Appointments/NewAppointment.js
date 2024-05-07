@@ -1,58 +1,43 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   View,
   Text,
-  StatusBar,
+  TextInput,
   Button,
   StyleSheet,
   ScrollView,
   SafeAreaView,
 } from 'react-native'
 
-export function AppointmentForm({ navigation, appointmentId = null }) {
+export function NewAppointment({ navigation, appointmentId = null }) {
   const [date, setDate] = useState('')
   const [time, setTime] = useState('')
   const [description, setDescription] = useState('')
 
-  useEffect(() => {
-    if (appointmentId) {
-      setIsEditMode(true)
-      //backend API:
-      //fetch(`https://yourapi.com/api/appointments/${appointmentId}`)
-      //.then(response => response.json())
-      //.then(data => {
-
-      // For demo:
-      setDate('2024-05-02')
-      setTime('2:00 pm')
-      setDescription('Physical and Vaccine check-up')
-    }
-  }, [appointmentId])
-
   const handleSubmit = () => {
-    console.log('Updating Appointment:', { date, time, description })
+    console.log('Creating New Appointment:', { date, time, description })
     navigation.navigate('Home')
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Text style={styles.formHeader}>Edit Appointment</Text>
+        <Text style={styles.formHeader}>Schedule a New Appointment</Text>
         <TextInput
           style={styles.input}
-          placeholder='Date (2024-05-03)'
+          placeholder='Date (2024-05-02)'
           value={date}
           onChangeText={setDate}
         />
         <TextInput
           style={styles.input}
-          placeholder='Time (4:00 pm)'
+          placeholder='Time (5:00)'
           value={time}
           onChangeText={setTime}
         />
         <TextInput
           style={styles.input}
-          placeholder='This is the description'
+          placeholder='Enter Appointment Description'
           value={description}
           onChangeText={setDescription}
           multiline
