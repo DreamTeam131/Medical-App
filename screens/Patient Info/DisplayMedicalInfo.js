@@ -29,8 +29,8 @@ const DisplayMedical = ({ navigation, route}) => {
                 console.log(error)
             }
             if ( data ) {
-                setAllergyInfo(data.test_array)
-                setIllnessInfo(data.array_stuff)
+                setAllergyInfo(data.allergy_info)
+                setIllnessInfo(data.previous_illness_info)
                 setMedInfo(data.medication_info)
                 setFetchError(null)
             }
