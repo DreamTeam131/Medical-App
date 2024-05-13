@@ -18,6 +18,11 @@ import Select from './SelectionPage'
 import DisplayInfo from './Patient Info/DisplayInfo'
 import CalendarScreen from './NewCalendarScreen'
 import { NewAppointment } from './Patient Upcoming Appointments/NewAppointment'
+import Edit from './Patient Info/editPage'
+import DisplayMedical from './Patient Info/DisplayMedicalInfo'
+import EditMedical from './Patient Info/EditPreviousIllness'
+import EditAllergy from './Patient Info/EditAllergyInfo'
+import EditMedication from './Patient Info/EditMedicationInfo'
 import LogoSeafoam from '../assets/logo-seafoam-transparent.png'
 
 function DetailScreen() {
@@ -172,6 +177,46 @@ export function HomeScreenStack({ navigation }) {
           headerBackTitle: 'Back',
         }}
       />
+      <HomeStack.Screen
+        name='EditInfo'
+        component={Edit}
+        options={{
+          title: 'Edit Patient Info',
+          headerBackTitle: 'Back',
+        }}
+      />  
+      <HomeStack.Screen
+        name='DisplayMedical'
+        component={DisplayMedical}
+        options={{
+          title: 'Patient Medical Info',
+          headerBackTitle: 'Back',
+        }}
+      />
+      <HomeStack.Screen
+      name= 'EditOtherInfo'
+      component={EditMedical}
+      options={{
+        title: 'Edit Patient Info',
+        headerBackTitle: 'Back',
+      }}
+      />     
+      <HomeStack.Screen
+      name= 'EditAllergyInfo'
+      component={EditAllergy}
+      options={{
+        title: 'Edit Patient Allergy Info',
+        headerBackTitle: 'Back',
+      }}
+      />    
+      <HomeStack.Screen
+      name= 'EditMedicationInfo'
+      component={EditMedication}
+      options={{
+        title: 'Edit Patient Medication Info',
+        headerBackTitle: 'Back',
+      }}
+      />    
     </HomeStack.Navigator>
   )
 }
