@@ -175,7 +175,7 @@ export function HomeScreenStack({ navigation }) {
           headerBackTitle: 'Back',
         }}
       />
-      HomeStack.Screen
+      <HomeStack.Screen
       name= 'EditOtherInfo'
       component={EditMedical}
       options={{
