@@ -40,6 +40,8 @@ const Display = ({ navigation, route }) => {
       {fetchError && <Text>{fetchError}</Text>}
       {patient && (
         <View style={styles.container}>
+        <Button title= 'Other Info' onPress= {() => navigation.navigate('DisplayMedical', {id:id})}/>
+    <Button title= 'Edit' onPress={() => navigation.navigate('EditInfo',{id:id})}/>
           {patient.map((patient) => (
             <Text key={patient.id}>
               <PatientCard key={patient.id} patient={patient} />
