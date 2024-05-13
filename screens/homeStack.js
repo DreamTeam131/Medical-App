@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Button, Image } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { DrawerScreenStack } from './drawerStack'
 import { StatusBar } from 'expo-status-bar'
@@ -23,6 +23,7 @@ import DisplayMedical from './Patient Info/DisplayMedicalInfo'
 import EditMedical from './Patient Info/EditPreviousIllness'
 import EditAllergy from './Patient Info/EditAllergyInfo'
 import EditMedication from './Patient Info/EditMedicationInfo'
+import LogoSeafoam from '../assets/logo-seafoam-transparent.png'
 
 function DetailScreen() {
   return (
@@ -37,7 +38,24 @@ const HomeStack = createNativeStackNavigator()
 
 export function HomeScreenStack({ navigation }) {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator
+      screenOptions={{
+        headerRight: () => (
+          <Image style={styles.tinyLogo} source={LogoSeafoam} />
+        ),
+        headerStyle: { borderBottomWidth: 2, borderColor: '#0ee3ae' },
+        headerTitleStyle: { fontFamily: 'Lexend_400Regular' },
+        drawerActiveTintColor: '#0ee3ae',
+        //drawerActiveBackgroundColor: '#0ee3ae',
+        drawerInactiveTintColor: '#000',
+        //drawerInactiveBackgroundColor: '#ddd',
+        drawerLabelStyle: {
+          fontFamily: 'Lexend_400Regular',
+          fontSize: 18,
+        },
+        drawerItemStyle: { borderRadius: 20 },
+      }}
+    >
       <HomeStack.Screen
         name='DrawerHome'
         component={DrawerScreenStack}
@@ -209,5 +227,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  tinyLogo: {
+    height: 50,
+    width: 50,
+    marginRight: 12,
   },
 })

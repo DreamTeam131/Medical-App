@@ -10,6 +10,7 @@ import {
 } from 'react-native'
 import { supabase } from '../lib/supabase'
 import SearchCard from '../lib/SearchCard'
+import PatientTile from '../components/PatientTile'
 
 const SelectThis = ({ navigation, route }) => {
   const [fetchError, setFetchError] = useState(null)
@@ -37,52 +38,31 @@ const SelectThis = ({ navigation, route }) => {
   }, [])
 
   return (
-    <ScrollView>
-      <ScrollView horizontal={true}>
-        <View style={styles.container}>
-          <Button
-            title='{Back}'
-            onPress={() => navigation.navigate('Select')}
-          />
-
-          {fetchError && <Text>{fetchError}</Text>}
-          {patient && (
-            <View style={{ flex: 2 }}>
-              {patient.map((patient) => (
-                <Text key={patient.id}>
-                  <SearchCard
-                    key={patient.id}
-                    patient={patient}
-                    navigation={navigation}
-                  />
-                </Text>
-              ))}
-            </View>
-          )}
-        </View>
-      </ScrollView>
+    <ScrollView style={styles.container}>
+      <View style={styles.patientList}>
+        {fetchError && <Text>{fetchError}</Text>}
+        {patient && (
+          <View>
+            {patient.map((patient) => (
+              <PatientTile
+                key={patient.id}
+                patient={patient}
+                navigation={navigation}
+              />
+            ))}
+          </View>
+        )}
+      </View>
     </ScrollView>
   )
 }
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
-    backgroundColor: '#eaeaea',
-    alignItems: 'stretch',
-    flexDirection: 'column',
+    backgroundColor: '#fff',
   },
-  grid: {
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    fontStyle: 'italic',
-    fontSize: 15,
-  },
-  textBox: {
-    borderWidth: 1,
-    borderBlockColor: '#777',
-    padding: 8,
-    margin: 10,
-    width: 200,
+  patientList: {
+    backgroundColor: 'white',
+    paddingHorizontal: 10,
   },
 })
 
