@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import {
   Image,
   Button,
@@ -26,6 +27,7 @@ import HorizontalApptList from '../components/HorizontalApptList'
 import Form from '../components/Form'
 import { CalendarScreen } from './NewCalendarScreen'
 import SearchBox from '../components/SearchBox'
+import Chart from '../components/Chart'
 
 const today = new Date()
 const week = [
@@ -54,6 +56,8 @@ const months = [
 let day = week[today.getDay()]
 let month = months[today.getMonth()]
 function HomeScreen({ navigation }) {
+  const [text, setText] = useState('')
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
@@ -76,8 +80,21 @@ function HomeScreen({ navigation }) {
         </View>
         <View style={styles.searchBarContainer}>
           <Text style={styles.labels}>Patient Search</Text>
-          <SearchBox placeholder='Search by patient name...' />
+          <SearchBox
+            placeholder='Search by patient name...'
+            onChangeText={(newText) => setText(newText)}
+            defaultValue={text}
+          />
+          <TouchableOpacity
+            style={styles.searchButton}
+            onPress={() =>
+              navigation.navigate('SpecificSelect', { search: text })
+            }
+          >
+            <Text style={styles.searchText}>Search</Text>
+          </TouchableOpacity>
         </View>
+        <Chart />
       </View>
     </TouchableWithoutFeedback>
   )
@@ -236,5 +253,17 @@ const styles = StyleSheet.create({
   },
   searchBarContainer: {
     paddingHorizontal: 0,
+  },
+  searchButton: {
+    alignItems: 'center',
+    borderRadius: 20,
+    backgroundColor: '#0ee3ae',
+    paddingVertical: 10,
+    marginVertical: 10,
+  },
+  searchText: {
+    color: 'white',
+    fontSize: 18,
+    fontFamily: 'Lexend_400Regular',
   },
 })
