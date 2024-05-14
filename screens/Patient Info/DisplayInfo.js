@@ -7,9 +7,11 @@ import {
   Button,
   StyleSheet,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native'
 import { supabase } from '../../lib/supabase'
 import PatientCard from '../../lib/PatientCard'
+import { Lexend_400Regular } from '@expo-google-fonts/lexend'
 
 const Display = ({ navigation, route }) => {
   const { id } = route.params
@@ -40,8 +42,18 @@ const Display = ({ navigation, route }) => {
       {fetchError && <Text>{fetchError}</Text>}
       {patient && (
         <View style={styles.container}>
-        <Button title= 'Other Info' onPress= {() => navigation.navigate('DisplayMedical', {id:id})}/>
-    <Button title= 'Edit' onPress={() => navigation.navigate('EditInfo',{id:id})}/>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('DisplayMedical', { id: id })}
+          >
+            <Text style={styles.buttonText}>Other Info</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('EditInfo', { id: id })}
+          >
+            <Text style={styles.buttonText}>Edit Patient</Text>
+          </TouchableOpacity>
           {patient.map((patient) => (
             <Text key={patient.id}>
               <PatientCard key={patient.id} patient={patient} />
@@ -57,6 +69,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: '100%',
     paddingHorizontal: 10,
+    marginBottom: 10,
+  },
+  buttonText: {
+    fontFamily: 'Lexend_400Regular',
+    fontSize: 18,
+    color: '#fff',
+  },
+  button: {
+    alignItems: 'center',
+    borderRadius: 10,
+    paddingVertical: 10,
+    backgroundColor: '#0ee3ae',
+    marginTop: 10,
   },
 })
 

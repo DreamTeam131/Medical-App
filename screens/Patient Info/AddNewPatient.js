@@ -369,39 +369,12 @@ export function AddNewPatient({ navigation }) {
                 keyboardType='default'
               />
 
-              <Text style={styles.label}>Previous Medical History</Text>
-
-              <Form
-                placeholder='List conditions/illnesses here'
-                value={props.values.previousIllness}
-                onChangeText={props.handleChange('previousIllness')}
-                keyboardType='default'
-              />
-
               <Text style={styles.label}>Current Illness</Text>
 
               <Form
                 placeholder='Enter current illness or condition'
                 value={props.values.currentIllness}
                 onChangeText={props.handleChange('currentIllness')}
-                keyboardType='default'
-              />
-
-              <Text style={styles.label}>Current Medications</Text>
-
-              <Form
-                placeholder='List current medications'
-                value={props.values.currentMedication}
-                onChangeText={props.handleChange('currentMedication')}
-                keyboardType='default'
-              />
-
-              <Text style={styles.label}>Past Medications</Text>
-
-              <Form
-                placeholder='List past medications'
-                value={props.values.pastMedication}
-                onChangeText={props.handleChange('pastMedication')}
                 keyboardType='default'
               />
 
