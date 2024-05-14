@@ -8,16 +8,16 @@ const Chart = () => {
       <Text style={styles.label}>Patient Inflow</Text>
       <LineChart
         data={{
-          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          labels: ['December', 'January', 'February', 'March', 'April', 'May'],
           datasets: [
             {
               data: [
-                Math.floor(Math.random() * (100 - 5) + 5),
-                Math.floor(Math.random() * (100 - 5) + 5),
-                Math.floor(Math.random() * (100 - 5) + 5),
-                Math.floor(Math.random() * (100 - 5) + 5),
-                Math.floor(Math.random() * (100 - 5) + 5),
-                Math.floor(Math.random() * (100 - 5) + 5),
+                Math.floor(Math.random() * (550 - 160) + 160),
+                Math.floor(Math.random() * (550 - 160) + 160),
+                Math.floor(Math.random() * (550 - 160) + 160),
+                Math.floor(Math.random() * (550 - 160) + 160),
+                Math.floor(Math.random() * (550 - 160) + 160),
+                Math.floor(Math.random() * (550 - 160) + 160),
               ],
             },
           ],

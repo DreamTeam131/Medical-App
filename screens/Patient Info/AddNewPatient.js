@@ -281,7 +281,7 @@ export function AddNewPatient({ navigation }) {
                   checkboxSize: 29,
                   checkboxStyle: {
                     borderRadius: 30,
-                    backgroundColor: 'blue',
+                    backgroundColor: '#0ee3ae',
                     padding: 2,
                   },
                   checkboxLabelStyle: {
@@ -313,7 +313,7 @@ export function AddNewPatient({ navigation }) {
                   checkboxSize: 29,
                   checkboxStyle: {
                     borderRadius: 30,
-                    backgroundColor: 'blue',
+                    backgroundColor: '#0ee3ae',
                     padding: 2,
                   },
                   checkboxLabelStyle: {
@@ -345,7 +345,7 @@ export function AddNewPatient({ navigation }) {
                   checkboxSize: 29,
                   checkboxStyle: {
                     borderRadius: 30,
-                    backgroundColor: 'blue',
+                    backgroundColor: '#0ee3ae',
                     padding: 2,
                   },
                   checkboxLabelStyle: {

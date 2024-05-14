@@ -24,6 +24,8 @@ import EditMedical from './Patient Info/EditPreviousIllness'
 import EditAllergy from './Patient Info/EditAllergyInfo'
 import EditMedication from './Patient Info/EditMedicationInfo'
 import LogoSeafoam from '../assets/logo-seafoam-transparent.png'
+import NewPrescription from './Prescriptions/NewPrescription'
+import PrescriptionTracker from './Prescriptions/PrescriptionTracker'
 
 function DetailScreen() {
   return (
@@ -184,7 +186,7 @@ export function HomeScreenStack({ navigation }) {
           title: 'Edit Patient Info',
           headerBackTitle: 'Back',
         }}
-      />  
+      />
       <HomeStack.Screen
         name='DisplayMedical'
         component={DisplayMedical}
@@ -194,29 +196,43 @@ export function HomeScreenStack({ navigation }) {
         }}
       />
       <HomeStack.Screen
-      name= 'EditOtherInfo'
-      component={EditMedical}
-      options={{
-        title: 'Edit Patient Info',
-        headerBackTitle: 'Back',
-      }}
-      />     
+        name='EditOtherInfo'
+        component={EditMedical}
+        options={{
+          title: 'Edit Patient Info',
+          headerBackTitle: 'Back',
+        }}
+      />
       <HomeStack.Screen
-      name= 'EditAllergyInfo'
-      component={EditAllergy}
-      options={{
-        title: 'Edit Patient Allergy Info',
-        headerBackTitle: 'Back',
-      }}
-      />    
+        name='EditAllergyInfo'
+        component={EditAllergy}
+        options={{
+          title: 'Edit Patient Allergy Info',
+          headerBackTitle: 'Back',
+        }}
+      />
       <HomeStack.Screen
-      name= 'EditMedicationInfo'
-      component={EditMedication}
-      options={{
-        title: 'Edit Patient Medication Info',
-        headerBackTitle: 'Back',
-      }}
-      />    
+        name='EditMedicationInfo'
+        component={EditMedication}
+        options={{
+          title: 'Edit Patient Medication Info',
+          headerBackTitle: 'Back',
+        }}
+      />
+      <HomeStack.Screen
+        name='NewPrescription'
+        component={NewPrescription}
+        options={{
+          title: 'Prescriptions',
+        }}
+      />
+      <HomeStack.Screen
+        name='PrescriptionTracker'
+        component={PrescriptionTracker}
+        options={{
+          title: 'Prescriptions',
+        }}
+      />
     </HomeStack.Navigator>
   )
 }

@@ -28,6 +28,7 @@ import Form from '../components/Form'
 import { CalendarScreen } from './NewCalendarScreen'
 import SearchBox from '../components/SearchBox'
 import Chart from '../components/Chart'
+import PrescriptionHome from './Prescriptions/PrescriptionHome'
 
 const today = new Date()
 const week = [
@@ -59,44 +60,42 @@ function HomeScreen({ navigation }) {
   const [text, setText] = useState('')
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <StatusBar style='auto' />
-        <View style={styles.dateContainer}>
-          <Text style={styles.dateText}>
-            {day}, {month} {today.getDate()}
-          </Text>
-        </View>
-        <View style={{ flexDirection: 'row' }}>
-          <Text style={styles.label}>Upcoming Appointments</Text>
-          <View style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <TouchableOpacity onPress={() => navigation.navigate('Calendar')}>
-              <Text style={styles.seeAll}>See All</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={styles.apptlist}>
-          <HorizontalApptList />
-        </View>
-        <View style={styles.searchBarContainer}>
-          <Text style={styles.labels}>Patient Search</Text>
-          <SearchBox
-            placeholder='Search by patient name...'
-            onChangeText={(newText) => setText(newText)}
-            defaultValue={text}
-          />
-          <TouchableOpacity
-            style={styles.searchButton}
-            onPress={() =>
-              navigation.navigate('SpecificSelect', { search: text })
-            }
-          >
-            <Text style={styles.searchText}>Search</Text>
+    <View style={styles.container}>
+      <StatusBar style='auto' />
+      <View style={styles.dateContainer}>
+        <Text style={styles.dateText}>
+          {day}, {month} {today.getDate()}
+        </Text>
+      </View>
+      <View style={{ flexDirection: 'row' }}>
+        <Text style={styles.label}>Upcoming Appointments</Text>
+        <View style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+          <TouchableOpacity onPress={() => navigation.navigate('Calendar')}>
+            <Text style={styles.seeAll}>See All</Text>
           </TouchableOpacity>
         </View>
-        <Chart />
       </View>
-    </TouchableWithoutFeedback>
+      <View style={styles.apptlist}>
+        <HorizontalApptList />
+      </View>
+      <View style={styles.searchBarContainer}>
+        <Text style={styles.labels}>Patient Search</Text>
+        <SearchBox
+          placeholder='Search by patient name...'
+          onChangeText={(newText) => setText(newText)}
+          defaultValue={text}
+        />
+        <TouchableOpacity
+          style={styles.searchButton}
+          onPress={() =>
+            navigation.navigate('SpecificSelect', { search: text })
+          }
+        >
+          <Text style={styles.searchText}>Search</Text>
+        </TouchableOpacity>
+      </View>
+      <Chart />
+    </View>
   )
 }
 
@@ -167,7 +166,7 @@ export function DrawerScreenStack({ navigation }) {
       <DrawerStack.Screen name='Find Patient' component={Select} />
       <DrawerStack.Screen name='Appointments' component={NewAppointment} />
       <DrawerStack.Screen name='Analysis' component={HomeScreen} />
-      <DrawerStack.Screen name='Prescriptions' component={HomeScreen} />
+      <DrawerStack.Screen name='Prescriptions' component={PrescriptionHome} />
     </DrawerStack.Navigator>
   )
 }
